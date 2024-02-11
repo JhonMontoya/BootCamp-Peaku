@@ -2,19 +2,24 @@ body {
     /* do not remove this */ 
     background-color: #eeeeff;
   }
+  
+  /*write your styles here*/
   #user {
     display: flex;
+    padding: 2px 1px;
     margin-bottom: 10px;
   }
   
   #pass {
     display: flex;
+    padding: 2px 1px;
     margin-bottom: 10px;
   }
   
   .btn {
     background-color: blue;
     border: blue;
-    border-radius: 5px;
-    padding: 6px;
+    border-radius: 4px;
+    padding: 5px 10px;
+    text-align: center;
   }
