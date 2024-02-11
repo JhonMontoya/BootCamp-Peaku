@@ -1,0 +1,20 @@
+body {
+    /* do not remove this */ 
+    background-color: #eeeeff;
+  }
+  #user {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  #pass {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .btn {
+    background-color: blue;
+    border: blue;
+    border-radius: 5px;
+    padding: 6px;
+  }
