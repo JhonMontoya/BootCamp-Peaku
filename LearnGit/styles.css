@@ -1,0 +1,26 @@
+header{
+    background-color: rgb(29, 160, 24);
+    padding: 10px;
+    text-align: center;
+}
+nav{
+    display: flex;
+    justify-content: center;
+}
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+}
+h1{
+    text-align: center;
+    margin-top: 100px;
+}
+footer{
+    background-color: rgb(29, 160, 24);
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
