@@ -1,0 +1,13 @@
+nav{
+    background-color: #333333;
+    display: inline-block;
+    overflow: hidden;
+    margin: auto;
+    line-height: 245%;
+}
+nav a{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 11px;
+}
