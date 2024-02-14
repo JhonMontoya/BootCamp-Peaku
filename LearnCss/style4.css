@@ -1,0 +1,17 @@
+table{
+    border-collapse: collapse;
+    width: 100%;
+    flex-wrap: wrap;
+}
+table th{
+    background-color: #0499aa;
+    color: white;
+    text-align: left;
+    padding: 8px;
+}
+table td{
+    padding: 8px;
+}
+#celda-impar{
+    background-color: #f2f2f2;
+}
