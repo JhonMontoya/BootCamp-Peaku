@@ -1,0 +1,109 @@
+La forma para definir funciones en JavaScript es similar a coomo se hace en C/C++
+Y se se pueden definir tres tipos de variables
+    -> let: Define una variable en el entorno local
+    -> var: define una variable que se utilizara en muchas partes
+    -> const: define una variable que no se modificará en todo el programa
+
+Acontinuación un ejemeplo de definición de una función
+
+function holaMundo() {
+    // Escribe tu código aquí
+    let saludo = "¡Hola Mundo!";
+    return saludo;
+}
+
+Un error muy común que suele ocurrir al momento de trabajar con variables 
+es ReferenceError, esto ocurre cuando intentamos hacer referencia a alguna variable
+que no está definida en el código.
+
+JavaScript soporta una amplia cantidad de tipos de datos, estos son los principales que podemos encontrar en este lenguaje:
+
+String: Representa un texto.
+
+Number: Representa un número en cualquier rango de valores.
+
+Boolean: Representa un valor verdadero o falso es decir true o false.
+
+null: Representa la ausencia de un dato.
+
+Array: Lista de datos que puede ser recorrida (iterada) se forma con ([...]).
+
+Object: Almacena un grupo de datos como los anteriores se forma con corchetes ({...}).
+
+function tipoDeDatos() { 
+    let saludo = "¡Hola mundo!";
+    let siete = 7;
+    let auto = {
+        color: "azul",
+        marca: "mitsubishi"
+    };
+    let tareas = ["Cepillar mis dientes", "Hacer mís tareas"];
+    let booleano = true;
+    let nada = null;
+
+    return [saludo,siete,auto,tareas,booleano,nada]
+}
+
+Los operadores matemáticos tal y como su nombre indica nos permiten operar con números para obtener un resultado esperado, al igual que con los tipos de datos existen varios, algunos más avanzados que otros, en este caso nos concentramos en los 5 principales los cuales son:
+
+    La suma representada con el signo +
+
+    La resta representada con el signo -
+
+    La multiplicación representada con el signo *
+
+    La división representada con el signo /
+
+    Módulo representado con el signo %; el módulo es el residuo de la división
+
+En JavaScript se utiliza el signo + para realizar la concatenación de String, como por ejemplo:
+
+function concatenacion() {
+    // Escribe tu código aquí
+    let lenguaje = 'JavaScript';
+    let saludo = 'Hola soy ' + lenguaje + " tu mejor amigo por siempre";
+}
+
+Salida en consola (console.log)
+
+La impresión en pantalla es uno de los superpoderes de los que gozamos los desarrolladores de software ya que nos permite previsualizar un valor como por ejemplo un número, un string y demás, todo esto sin que el usuario final se percate de que está pasando al interior de nuestro código.
+
+Podemos utilizar console.log tantas veces como lo necesitemos en un mismo programa.
+
+En JavaScript se tienen los siguientes comparadores lógicos.
+
+    > mayor que…
+
+    < menor que…
+
+    >= mayor o igual que…
+
+    <= menor o igual que…
+
+    === igual que…
+
+    !== diferente que…
+
+JavaScript es sencible al uso de mayusculas
+
+Condicionales:
+    -> if: Es el primer nivel de los condicionales y a su vez el más importante ya que representa la estructura inicial; la forma en la que esta condición o sentencia funciona es mediante comparaciones.
+    -> else: La sentencia else se ejecutará siempre que la o las condiciones anteriores no se cumplan
+    -> else if: nos permite declarar nuevas condiciones para evaluar,
+
+Existen 3 operadores lógicos, en JavaScript su representación es la siguiente:
+
+    ->AND (&&) = se asegura de que todas expresiones son verdaderas
+
+    ->OR (||) = se asegura de que al menos una expresión son verdadera
+
+    ->NOT (!) = niega el resultado de una expresión, por ejemplo si el false la convierte en true y viceversa
+
+El ciclo for…of recorre cada elemento en una lista o array y lo almacena en una variable temporal que cambiará su valor en cada vuelta 
+
+el método push(), este agregará el último participante inscrito al final de la lista, la forma correcta de utilizar el método push es mediante el uso de un punto ". " como unión entre la lista y el propio método.
+
+Generalmente un programa informático se encuentra dividido en varias partes para facilitar su lectura y su mantenimiento, una las maneras más básicas en las cuales podemos hacer dichas separaciones es mediante la implementación de bloques de código.
+
+Una función, en pocas palabras, es un bloque de código que tiene encargada una funcionalidad, de allí su nombre. Dichas funciones pueden ser invocadas en cualquier momento haciendo uso de su nombre a esto se le llama referenciar.
+
