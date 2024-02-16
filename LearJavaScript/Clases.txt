@@ -170,3 +170,167 @@ function objetosLiterales() {
         " posee " + cocheElegido.ventanas + " ventanas, y es modelo " + cocheElegido.modelo);
     return concesionarioDeCoches;
 }
+
+
+El ciclo while es bastante similar a ciclo for, es decir, ambos están diseñados para ejecutarse una y otra vez dependiendo de la condición, la diferencia radica en cuántas veces se ejecutan, mientras que el for lo utilizamos comúnmente para recorrer listas o rangos, el ciclo while suele ser más utilizado cuando no tenemos idea de en qué momento va a terminar el propio ciclo.
+
+
+El ciclo do…while tiene una única diferencia con el ciclo while simple, y esta es que sin importar cual sea la condición el programa ejecutará el bloque correspondiente al menos una vez esto lo hace muy útil en caso de que necesitemos que un programa implemente dicha funcionalidad.
+
+*************************************
+
+PROGRAMCIÓN ORIENTADA A OBJECTOS.
+
+*************************************
+
+Las clases, son un molde con el que podemos crear objetos.
+Como ves crear una clase es bastante sencillo, lo único que debemos hacer es digitar la palabra reservada class seguido del nombre de nuestra clase.
+
+Los atributos son todo lo que puede poseer un objeto.
+
+Un atributo es muy similar a una variable con la única diferencia que no utilizamos las palabras reservadas let, var o const para crearlos.
+
+NOTA: cuando creamos el objeto o variable, la clase tiene unos paréntesis de apertura y cierre, estos se usan para pasar datos como si fueran los parámetros de una función. Veremos esto más adelante.
+
+Los métodos son las acciones que puede realizar un objeto
+
+NOTA: Cada acción tiene un verbo asociado, (presentarse, realizar y tocar,etc.), aunque no sea una regla irrompible por convención se suelen utilizar los verbos ya que expresan exactamente qué acción llevará a cabo el método, a esto se le conocen como buenas prácticas de programación.
+
+Para crear métodos su sintaxis es muy similar a la utilizada al crear funciones con la diferencia que la palabra reservada function no se utiliza.
+
+Muchas veces vamos a necesitar referenciar un atributo o método dentro de la clase, para eso requerimos hacer uso de la sentencia this.
+
+class BandaDeRock {
+    nombre = "Dragons";
+    numeroIntegrantes = 6;
+
+    presentarse() {
+        return "Hola nosotros somos " + this.nombre + " una banda de Rock con " + this.numeroIntegrantes + " integrantes";
+    }
+}
+
+function principal() {
+    let miBanda = new BandaDeRock();
+    // Imprime la presentación de tu banda aquí
+    console.log(miBanda.presentarse());
+    return miBanda.presentarse();
+}
+
+Un constructor es un método que se utiliza, como su nombre lo indica, para construir un objeto digamos que de una forma un poco más personalizada.
+
+El método constructor es la mejor forma de inicializar atributos como lo veremos más adelante, su funcionamiento es muy similar a una función con parámetros, piensa que si la clase es el molde de un objeto entonces el constructor es quien se encarga de que se ensamble perfectamente dicho objeto
+
+class BandaDeRock {
+    // Crea el constructor aquí
+    constructor(nombre, numeroIntegrantes) {
+        this.nombre = nombre;
+        this.numeroIntegrantes = numeroIntegrantes;
+    }
+
+    presentarse() {
+        return "Hola nosotros somos " + this.nombre + " una banda de Rock con " + this.numeroIntegrantes + " integrantes";
+    }
+}
+
+function principal() {
+    // Crea tu banda aquí
+    let miBanda = new BandaDeRock("Titans", 4);
+    // Imprime la precentación de tu banda
+    console.log(miBanda.presentarse());
+    // Crea la banda de Daniela aquí
+    let laBandaDeDaniela = new BandaDeRock("DanDan-Band", 5);
+    // Imprime la presentación de la banda de Daniela
+    console.log(laBandaDeDaniela.presentarse());
+
+    return laBandaDeDaniela.presentarse();
+}
+
+************************
+
+HERENCIA
+
+************************
+
+Técnicamente hablando, un objeto es el resultado de asignar a una variable  los métodos y atributos de una clase, a esto se le conoce como instancia.
+
+Hablamos de herencia cuando una clase hija hereda o extiende los atributos y métodos de una clase padre.
+
+heredar en lenguaje JavaScript se escribe como extends.
+
+Al trabajar con herencia es muy común que queramos pasar datos de una clase hijo a la clase padre, sobre todo al momento de crear un objeto ya que dicha clase padre seguramente también posea un método constructor, para eso utilizamos el método super() el cual ya viene incorporado en JavaScript listo para utilizar,
+
+En resumen, el método super() se utiliza para enviar valores a la clase padre a través de una clase hijo.
+
+La sobreescritura de métodos es la acción de reescribir lo que hace un método que pertenezca a una clase, generalmente se sobreescriben los métodos que son heredados aunque no es una regla estricta.
+
+Los getters y setters son métodos especiales que utilizamos para obtener información de los atributos en una clase o modificarla, si bien su uso no es una regla general, se considera una buena práctica de programación que vale la pena aprender, ya que puedes encontrarte su sintaxis en muchos lugares
+
+Los getters son los métodos que se encargan de traer la información almacenada en los atributos de una clase.
+
+Los setters son los métodos que se utilizan para modificar el valor de un atributo, por ejemplo,
+
+class Vehiculo {
+    constructor(color, marca, ruedas) {
+        this._color = color;
+        this._marca = marca;
+        this._ruedas = ruedas
+    }
+
+    moverse() {
+        return 'Este veiculo de color ' + this._color + ' se desplaza en ' + this._ruedas + ' ruedas';
+    }
+
+    // construye el método get aquí
+    get color() {
+        return this._color
+    }
+
+    // Construye el método set aquí
+    set color(newColor) {
+        this._color = newColor;
+    }
+}
+
+class Motocicleta extends Vehiculo {
+    constructor(color, marca, ruedas) {
+        super(color, marca, ruedas);
+    }
+
+    moverse() {
+        return "Esta moto de color " + this._color + " se desplaza en " + this._ruedas + " ruedas";
+    }
+}
+
+function principal() {
+    let miMotocicleta = new Motocicleta('Rojo', 'Suzuki', 2);
+
+    // Imprime el color de la motocicleta
+    console.log(miMotocicleta.color);
+    // Modifica el color de la motocicleta
+    miMotocicleta.color = 'Negro';
+    // Retorna el color de la motocicleta
+    return miMotocicleta.color;
+}
+
+
+
+******
+
+Operadores ternarios.
+
+******
+
+
+Un operador ternario en JavaScript es, en pocas palabras, una contracción de las sentencias if y else, la principal diferencia que podemos encontrar es que utilizar este operador es mucho más corto, además en la mayoría de los casos es más entendible.
+
+sintaxis:
+condicion ? expresión1 : expresión2;
+
+Fíjate que la forma de utilizar el operador ternario es mediante una condición que se evaluará como true o false, luego el signo de pregunta (?) seguido de lo que hará si la condición es verdadera (true), por último se utilizan dos puntos ( : ) y lo que pasará si la condición es falsa (false).
+
+
+La sentencia switch es comúnmente utilizada al momento de trabajar con cadenas que requieran más de una condición, el uso de la sentencia switch reemplaza, en ciertas ocasiones, las sentencias if, else if y else mediante una sintaxis más sencilla.
+
+Se digita la palabra reservada switch seguida de paréntesis ( y la variable que deseamos comparar), por último se utilizan llaves {...} 
+
+Para utilizar la interpolación se utilizan backticks o comillas invertidas (`...`) y, donde se quiera reemplazar un valor se añade un signo de dólar más llaves de apertura y cierre ${...}, al interior de dichas llaves se ubica el valor que deseamos concatenar.
