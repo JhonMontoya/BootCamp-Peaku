@@ -107,3 +107,66 @@ Generalmente un programa informático se encuentra dividido en varias partes par
 
 Una función, en pocas palabras, es un bloque de código que tiene encargada una funcionalidad, de allí su nombre. Dichas funciones pueden ser invocadas en cualquier momento haciendo uso de su nombre a esto se le llama referenciar.
 
+un objeto literal de JavaScript es un conjunto de datos almacenados en forma de clave - valor, estos están delimitados por los signos de llaves {...} y generalmente se asignan a una variable.
+
+ las claves van seguidas de dos puntos : y no utilizan comillas, por su parte las definiciones o valores son un tipo de dato, en este caso strings o cadenas de texto, por lo que debemos utilizar las comillas "...", finalmente cada pareja de clave y valor finaliza con una coma ( , ) esto es muy importante ya que de otro modo el programa dará error.
+
+ Ejemplo de descripcion de un objeto
+ function objetosLiterales() {
+  // crea tu objeto aquí
+  let automovil = {
+    marca: "Renault",
+    color: "Rojo",
+    modelo: 2006
+  }
+  // imprime el objeto aquí
+  return automovil;
+}
+
+Como adelanto debes saber que hay dos formas de acceder a los valores de un objeto literal, estás son mediante el uso de un punto o utilizando los corchetes [...], no obstante para esta ocasión nos concentraremos en la más estandarizada y comúnmente implementada que es la nomenclatura del punto.
+
+Ejemplos de acceso a un valor en un objeto:
+    ->console.log(automovil.color);
+	->console.log(automovil["color"]);
+
+Para impirme mediante consola debemos convertir un objeto a JSON de la siguiente manera:
+
+    ->console.log(JSON.stringify(objeto));
+
+Ahora veamos cómo eliminar un valor ya existente por ejemplo el color para ello utilizamos la palabra reservada delete seguida del valor a eliminar, nuevamente haciendo uso del punto.
+
+    ->delete automovil.color;
+
+para agregar un valor;
+
+    ->objeto.atributo = "Valor"
+
+function objetosLiterales() {
+    let concesionarioDeCoches = [
+        { marca: "Chevrolet", color: "verde", ventanas: 4, modelo: 2015 },
+        { marca: "Mustang", color: "azul", ventanas: 6, modelo: 2022 },
+        { marca: "Renault", color: "gris", ventanas: 6, modelo: 2009 }
+    ];
+
+    // Escribe tu código aquí
+    console.log("En este momento tenemos " + concesionarioDeCoches.length + " coches");
+
+    concesionarioDeCoches.push({ marca: "Sedán", color: "rojo", ventanas: 5, modelo: 2018 });
+    concesionarioDeCoches.push({ marca: "Toyota", color: "negro", ventanas: 6, modelo: 2021 });
+
+    console.log("Acaba de llegar un nuevo cargamento con 2 vehículos, por lo tanto ahora hay  " +
+        concesionarioDeCoches.length + " coches en el concesionario");
+
+    console.log("Empleado: Hola, puedo ayudarle en algo señor/a");
+    console.log("Cliente: Hola, estoy buscando un auto, podría mostrarme los que tiene disponibles, por favor");
+    console.log("Empleado: Claro, pase por favor");
+
+    for (let coche of concesionarioDeCoches) {
+        console.log("Estás viendo el coche " + coche.marca)
+    }
+
+    let cocheElegido = concesionarioDeCoches[1];
+    console.log("Este coche de la marca " + cocheElegido.marca + " ,tiene un hermoso color " + cocheElegido.color +
+        " posee " + cocheElegido.ventanas + " ventanas, y es modelo " + cocheElegido.modelo);
+    return concesionarioDeCoches;
+}
