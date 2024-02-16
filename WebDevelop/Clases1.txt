@@ -1,0 +1,93 @@
+Vamos a entender qué es getElementById: Es un método con el cual podremos acceder algún elemento mediante su id.
+
+
+*******
+html
+*******
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="title">hola mundo</h1>
+    <h2 class="sub-title">hola mundo otra vez</h2>
+    <ul>
+        <li>item-1</li>
+        <li>item-2</li>
+        <li>item-3</li>
+    </ul>
+    <button id="change-lists" onclick="changeListDom()">change DOM</button>
+</body>
+
+</html>
+
+*******
+JS
+*******
+document.getElementById('title').style.color = 'red'
+
+Así como uno puede modificar la UI desde JS uno también puede acceder a textos del HTML e imprimirlos en la consola. 
+
+*******
+JS
+*******
+let titulo = document.getElementById('title');
+let texto = titulo.innerText;
+console.log(texto);
+
+¿Qué es getElementsByClassName?
+
+Es un método con el cual podremos acceder a los elementos que contienen la misma clase, la diferencia al método anterior es que este retorna un objeto similar a un array de los elementos que contenga dicha clase.
+
+*******
+JS
+*******
+let resultado = document.getElementsByClassName('sub-title')
+let subtitle = resultado[0]
+subtitle.style.fontSize = "40px"
+
+¿Qué es getElementsByTagName?
+
+Es un método con el cual podremos acceder a los elementos que contienen la misma etiqueta de HTML, Este es similar al método anterior porqué retorna un objeto similar a un array de los elementos que contenga dicha etiqueta de HTML.
+
+*******
+JS
+*******
+const changeListDom = () => {
+    let allContentList = document.getElementsByTagName('li')
+    allContentList[0].style.fontSize = "26px"
+    allContentList[1].style.background = "red"
+    allContentList[2].style.color = "blue"
+}
+
+Explicación: El DOM es una estructura tipo árbol:
+
+¡Tipos de datos importantes para el manejo del dom!
+
+A continuación veremos algunos tipos de datos que nos servirán para manejar el contenido de elementos de nuestro documento.
+
+    document: Es todo el documento html de la aplicación.
+
+    element: Se refiere a un elemento o a un nodo de tipo elemento del documento, como por ejemplo una etiqueta <h1> o una lista desordenada, este tipo de dato tiene unos métodos muy importantes que son:
+
+        element.innerHTML: devuelve la sintaxis HTML del elemento y todo lo que está dentro del elemento.
+
+        element.innerText: devuelve el contenido en texto del elemento.
+
+        Nota: estos métodos son modificables.
+
+*******
+JS
+*******
+var changeListDom = () => {
+    let mainTitle = document.getElementById('title');
+    mainTitle.innerHTML = '<p>ahora es un parrafo</p>'
+    let allContentList = document.getElementsByTagName('li');
+    allContentList[0].innerText = 'cambiamos el texto'
+    console.log(mainTitle)
+}
