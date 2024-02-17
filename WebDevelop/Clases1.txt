@@ -91,3 +91,112 @@ var changeListDom = () => {
     allContentList[0].innerText = 'cambiamos el texto'
     console.log(mainTitle)
 }
+
+¿ Que es y para qué nos sirve "QuerySelector" ?
+
+Es una biblioteca de JavaScript rápida, pequeña y rica en funciones. Hace que cosas como el recorrido y la manipulación de documentos HTML, el manejo de eventos y la animación sean mucho más simples; Con una combinación de versatilidad y flexibilidad.
+
+Para empezar, veamos un selector. Cuando utilizamos la función querySelector() lo que pasamos como parámetro es el selector. Esta función devuelve justamente los elementos de la página que concuerdan con el selector enviado por parámetro, estos pueden ser: # para ID, (.) Para clases, para referirnos a una etiqueta HTML, entre otros.
+
+*****************
+HTML
+*****************
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>QuerySelector example</title>
+</head>
+
+<body>
+    <h1>My web page</h1>
+    <p id="paragraph1">This is a paragraph</p>
+    <p class="paragraph">This is another paragraph</p>
+    <p class="paragraph">Other</p>
+    <p class="paragraph">And one more paragraph</p>
+    <ul>
+        <li>Element 1</li>
+        <li>Element 2</li>
+        <li>Element 3</li>
+    </ul>
+</body>
+
+</html>
+
+*****************
+JS
+*****************
+// escribe tu codigo aqui
+const myParagraph = document.querySelector("#paragraph1");
+// cambia el contenido del parrafo aqui
+myParagraph.textContent = "- This is the new paragraph content -";
+// llama los id con clase parrafo aqui
+const myParagraphs = document.querySelectorAll(".paragraph");
+console.log(myParagraphs)
+
+
+********    SELECTORES BÁSICOS     ************
+
+
+
+    ->Selector de etiquetas: $("h1") //selecciona todos los encabezados de nivel 1.
+
+    ->Selector por identificador: Sirven para seleccionar los elementos que tengan un identificador dado, que se asigna a las etiquetas a través del atributo id del HTML. Para utilizar este selector se indica primero el carácter "#" y luego el identificador de cuyo elemento se desee seleccionar.
+
+    $("#id-elemento") esto selecciona una etiqueta que tiene el atributo id="id-elemento"
+
+    ->Selector por clase: Podemos indicar el nombre de una clase (class de CSS) y seleccionar todos los elementos a los que se ha aplicado esta clase. Para ello, como en CSS, comenzamos colocando el carácter "." y luego el nombre de la clase que deseamos seleccionar.
+
+    $(".mi-clase") para seleccionar todos los elementos que tienen el atributo class="mi-clase"
+
+    -> Selector por varias clases: Si lo deseamos, podemos indicar varias clases CSS, para obtener todos los elementos que tienen esas clases aplicadas: todas al mismo tiempo. Esto se consigue comenzando por un ".", igual que los selectores de clases, y luego otro "." para separar las distintas clases que queremos utilizar en el selector.
+    
+    $(".clase1.clase2") para seleccionar los elementos que tienen class="clase1 clase2"
+
+    -> Selector asterisco "*": Nos sirve para seleccionar todos los elementos de la página.
+
+    $("*") esto selecciona todos los elementos que tiene la página
+
+    -> Concatenar varios selectores distintos:
+    Por último, podemos utilizar varios selectores, para obtener todas las etiquetas que cumplen uno de ellos. No hace falta que cumplan todos los selectores a la vez, sino con que uno de ellos concuerde es suficiente. Para ello colocamos todos los selectores que deseamos, separados por una coma ",".
+    
+    $("div,p") para seleccionar todos los elementos división y párrafo$(".clase1,.clase2") //selecciona los elementos que tienen la clase "clase1" o "clase2"$("#mi-id,.mi-clase,ul) esto selecciona el elemento con id="mi-id", los elementos con class="mi-clase" y todas las listas UL
+
+*************
+HTML
+*************
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Query Selector Example</title>
+</head>
+
+<body>
+    <div class="container">
+        <p class="color-text">Red text</p>
+        <p class="color-text">Blue text</p>
+        <p class="color-text">Green text</p>
+    </div>
+</body>
+
+</html>
+
+
+***********
+JS
+***********
+
+const paragraphs = document.querySelectorAll(".color-text");
+
+paragraphs.forEach((elem, index) => {
+    if (index === 0) {
+        elem.style.color = 'red';
+    } else if (index === 1) {
+        elem.style.color = 'blue';
+    } else {
+        elem.style.color = 'green';
+    }
+});
