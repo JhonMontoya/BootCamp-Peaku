@@ -1,0 +1,154 @@
+¿Que es una Api?
+
+API(interfaz de programación de aplicaciones).
+
+Pero ¿Que es?
+
+Usemos la analogía de un restaurante, vas a tu restaurante favorito y te atiende el mesero, y tú le pides al mesero tu comida favorita de ese lugar, el mesero le da tu mensaje al chef y una vez el chef termino de cocinar tu comida favorita el mesero te la trae a la mesa.
+
+Con esa analogía el mesero sería la API donde toma los datos del cliente, se los manda al servidor, y una vez el servidor tenga lo que le pidió el cliente, el API le devuelve la información al cliente.
+
+
+Métodos de petición HTTP
+
+También llamados Verbos http, son métodos que se usan para indicar la acción que se desea realizar al llamado de una API.
+
+Los principales métodos son:
+
+    -> GET: Es una petición que se usa para obtener/recuperar datos en una API.
+
+    -> POST: Es una petición que se utiliza para el envió de datos hacia una API.
+
+    -> PUT: Es una petición que se utiliza para enviar datos para ser reemplazados completamente, en resumen se envía unos datos y reemplaza completamente los datos antiguos de un recurso por los nuevos que se enviaron.
+
+    -> DELETE: Es una petición que borra un recurso en específico.
+
+    -> PATCH: Es una petición que se utiliza para actualizar elementos específicos a diferencia de PUT, este método lo que hace es que si tenemos un objeto persona y queremos actualizar solo el nombre de la persona, usaremos PATCH, mientras que si queremos actualizar todos los datos de ese objeto persona, usaremos es PUT. 
+
+Trabajando con JSON
+
+JavaScript Object Notation (JSON) es un formato basado en texto que su similitud se asemeja a la sintaxis de objetos de JavaScript. Es comúnmente utilizado para transmitir datos en aplicaciones web (por ejemplo: enviar algunos datos desde el servidor al cliente, así estos datos pueden ser mostrados en páginas web, o vice versa)
+
+********
+JS
+********
+const getPerson = () => {
+  const myJson = `[
+  {
+    "name": "pepito",
+    "city": "Bogotá",
+    "university": "Universidad De los Andes",
+    "company": "peaku"
+  }
+]`
+  const javaScriptObj = JSON.parse(myJson)[0];
+  document.getElementById("main-content").innerHTML = `<p class="text-center">${javaScriptObj.name}, ${javaScriptObj.company}</p>`
+}
+
+Uso de Fetch
+
+Es una interfaz que proporciona JavaScript para hacer peticiones hacia una API.
+
+fetch recibe una url y un objeto({}) donde irían los metodos HTTP y headers(veremos que es más adelante), esto obtiene una respuesta, esa respuesta la convertimos a json y luego sacamos una data que se puede manipular o visualizar, esas respuestas se le llaman promesas que serían los dos .then.
+
+
+**************
+HTML
+**************
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>Consumo de APIS</title>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <header class="row">
+      <div class="col-3 p-0">
+        <nav class="navbar navbar-light bg-dark d-flex justify-content-center">
+          <a class="navbar-brand text-light" href="#">Nav</a>
+        </nav>
+      </div>
+      <div class="col-9 p-0">
+        <nav class="navbar navbar-expand-xxl navbar-light bg-dark">
+          <div class="navbar-nav d-flex flex-row">
+            <a class="ms-3 nav-link active text-light" href="#">Home</a>
+            <a class="mx-2 nav-link text-light" href="#">Features</a>
+            <a class="nav-link text-light" href="#">About</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <section id="main-content" class="row d-flex justify-content-center align-items-center" style="height: 73.8vh;">
+      <button id="button-get-data" href="#" class="btn btn-primary w-50" onclick="getPerson()">Show</button>
+    </section>
+    <footer class="row bg-dark" style="height: 10vh;"></footer>
+  </div>
+</body>
+
+</html>
+
+**************
+JS
+**************
+
+let url = 'https://rickandmortyapi.com/api/character/2';
+
+fetch(url, {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+})
+    .then(response => response.json())
+    .then(data => {
+        let card = document.getElementById('main-content')
+        card.innerHTML = ` <div class="card d-flex justify-content-center align-items-center" style="width: 70%;">
+                          <img src="${data.image}" class="card-img-top mt-1 p-0" alt="..." style="width: 70%; height: 40%;">
+                          <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                            <h5 class="card-title">${data.name}</h5>
+                            <p class="card-text">${data.species}</p>
+                          </div>
+                        </div>
+      `
+    })
+    .catch(error => console.error('Error:', error));
+
+    	JavaScript 
+
+¿Que es y para que sirve "DATA-ATTRIBUTES"?
+
+Los atributos de datos o ‘data attributes’, en inglés, son especificaciones personalizadas que se pueden agregar a elementos HTML para almacenar información adicional. Estos se definen utilizando el prefijo “data” seguido del nombre del atributo personalizado.
+
+Por ejemplo, supongamos que tiene un elemento HTML que representa un artículo en una página web, puede agregar un atributo de datos personalizado llamado "author" para almacenar el nombre del autor del artículo:
+
+***********
+HTML
+***********
+<article data-author="John Smith">
+    <h2> Article title </h2>
+    <p> Article content </p>
+    <button id="call-author">See content author</button>
+</article>
+
+***********
+JS
+***********
+callAuthor = document.querySelector("#call-author");
+let author = document.querySelector('article').dataset.author;
+
+callAuthor.addEventListener("click", () => {
+    alert(author); //sample "John Smith"
+})
+
+Leer los valores de estos atributos en JavaScript también es muy sencillo:
+
+Podemos usar getAttribute() con su nombre HTML completo para leerlos, pero tenemos una forma más simple: un DOMStringMap (en-US) puede leer a través de una propiedad dataset (en-US).
+
+Para adquirir un atributo data a través del dataset del objeto, obtenga la propiedad por la parte del nombre del atributo después de data- (tenga en cuenta que los guiones son convertidos en camelCase().

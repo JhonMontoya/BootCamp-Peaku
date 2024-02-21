@@ -200,3 +200,269 @@ paragraphs.forEach((elem, index) => {
         elem.style.color = 'green';
     }
 });
+
+
+¿Que es un evento?
+
+En JavaScript, un evento es un mecanismo que permite interactuar y controlar la página web. Los eventos son producidos a medida que los usuarios interactúan con la página, y al ser detectados por JavaScript, pueden desencadenar la ejecución de código. De esta manera, los eventos permiten crear interacciones dinámicas y personalizadas dentro de la página web.
+
+Existen 3 formas principales de manejadores de eventos, donde su variación principal es la sintaxis y la forma de detectar el evento.
+
+    ->Manejadores como atributos HTML
+
+    Este método es el mas sencillo de indicar al código JavaSacript que se produjo un evento, se declara dentro de los atributos del propio elemento HTML, puede ser útil si lo que se desea realizar con el evento es una modificación muy puntual dentro del código, sin embargo, resulta ser poco profesional debido que puede hacer que el código sea mas difícil de mantener a medida que el proyecto incrementa su complejidad.
+
+
+    -> Manejadores desde Javascript o Manejadores semanticos
+
+    El segundo método es permite tener una estructura entre HTML, CSS y JavaScript muy ordenada, evitando que el código sea excesivamente complicado y facilitando su mantenimiento además de reducir la semántica (de ahí su nombre), es decir, la interpretación y ejecución del código. Este método consiste en asignar funciones externas mediante las propiedades del DOM de cada uno de los elementos.
+
+    ->Listeners
+
+    El tercer método como si nombre lo indica son "Escuchadores" de eventos, los cuales se pueden crear o destruir , su forma de implementarlos es similar a la anterior sin embargo, una de sus principales ventajas es que se puede definir la lógica inmediatamente se declara permitiendo así que el código sea mas sencillo de leer, otra ventaja adicional es que se pueden agregar varios listeners a un mismo elemento HTML para diferentes eventos, lo que convierte este método en el que mayor modularidad y organización del código brinda. Una de las principales diferencias que se pueden observar, dentro de los parámetros de la creación del listener inicialmente se declara el tipo evento que se va a escuchar, el cual en esta ocasión va entre comillas y sin el prefijo 'on', seguido de esto se declara la función que se va a ejecutar.
+
+
+****************
+HTML
+****************
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Events Introduction</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Agregue aquí el botón 1 -->
+        <button id="button1" class="button" onclick="clickButton1()">Botón 1</button>
+        <!-- Agregue aquí el botón 2 -->
+        <button id = "button2" class="button">Botón 2</button>
+        <!-- Agregue aquí el botón 3 -->
+        <button id = "button3" class="button">Botón 3</button>
+        <label id="show">0</label>
+        
+    </div>
+</body>
+
+</html>
+
+****************
+CSS
+****************
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px 
+}
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+#button1 {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#button2 {
+    background-color: #d31111;
+    color: white;
+}
+
+#button3 {
+    background-color: #37259b;
+    color: white;
+}
+
+****************
+JS
+****************
+
+let buttonPressed = 0;
+
+//Agregue función botón 1
+//Manejadores de atributo
+function clickButton1() { 
+    buttonPressed = 1;
+    render();
+}
+
+//Agregue función botón 2
+//manejadores semanticos
+let button2 = document.getElementById("button2");
+button2.onclick = clickButton2;
+
+function clickButton2() { 
+    buttonPressed = 2;
+    render();
+}
+
+//Agregue función botón 3
+//listeners
+let button3 = document.getElementById("button3");
+button3.addEventListener("click", function clickButton3() { 
+    buttonPressed = 3;
+    render();
+});
+
+function render() {
+    document.querySelector("#show").innerHTML = `Botón Presionado: ${buttonPressed}`;
+    console.log("Botón Presionado: " + buttonPressed)
+}
+
+
+
+********************************************************
+Tipos de evento
+
+Tipos de eventos
+
+Los tipos de eventos son fundamentales en el manejo de eventos de JavaScript ya que permiten que el código corresponda a las acciones ejecutadas por el usuario o interacciones de la pagina web. Muchos de ellos están asociados a elementos HTML, como por ejemplo en la lección anterior el evento onclick, que es comúnmente asociado con botones, sin embargo, también podría activarse por enlaces y demás, a continuación te presento una lista de eventos mas importantes y comunes utilizados en el desarrollo web.
+
+    onclick: Este evento, se aplica en cuando el usuario hace click sobre un elemento de la pagina web, por ejemplo un botón, un enlace, una imagen...etc.
+
+    onscroll: Este evento ocurre cuando un elemento tipo scrollbar es scrolleado, suele usarse para agregar efectos visuales o generar una carga de elementos como una paginación.
+
+    onchange: Este evento, se ejecuta en el momento en que un componente cambia su valor, por ejemplo al ingresar texto en un campo de texto, seccionar una opción de un select, o cambiar el valor de una casilla de verificación ...etc
+
+    onmouseover: Este evento se activa cuando se el cursor del mouse pasa por encima de cualquier elemento de la pagina web.
+
+    onsubmit: Este evento se ejecuta al enviar un formulario, sea por un botón o al presionar la tecla Enter.
+
+*************
+HTML
+*************
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test</title>
+</head>
+
+<body>
+    <div class="container">
+        <div id="box1" class="box"><label>0</label></div>
+        <div id="box2" class="box"><label>0</label></div>
+        <div id="box3" class="box"><label>0</label></div>
+        <div id="box4" class="box"><label>0</label></div>
+    </div>
+</body>
+
+</html>
+
+</html>
+*************
+CSS
+*************
+body {
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(2, 1fr);
+			height: 100vh;
+			width: 100vw;
+		}
+
+		.box {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 48px;
+			color: white;
+		}
+
+		.box:nth-child(1) {
+			background-color: #ff4e50;
+		}
+
+		.box:nth-child(2) {
+			background-color: #49beb7;
+		}
+
+		.box:nth-child(3) {
+			background-color: #9C27B0;
+		}
+
+		.box:nth-child(4) {
+			background-color: #f1c40f;
+		}
+*************
+JS
+*************
+//Agrega tu solución aqui
+
+let box1 = document.querySelector("#box1");
+let box2 = document.querySelector("#box2");
+let box3 = document.querySelector("#box3");
+let box4 = document.querySelector("#box4");
+
+//Funciones para box 1
+box1.addEventListener("mouseover", function box1Color() { 
+    box1.style.backgroundColor = "#f1c40f";
+    box1.style.backgroundColor = '#f1c40f';
+    box2.style.backgroundColor = '#49beb7';
+    box3.style.backgroundColor = '#9C27B0';
+    box4.style.backgroundColor = '#ff4e50';
+});
+
+box1.addEventListener("click", function box1Text() { 
+    let valBox1 = box1.textContent;
+    valBox1++;
+    render("box1",valBox1);
+});
+
+//Funciones para box 2
+box2.addEventListener("mouseover", function box2Color() {
+    box1.style.backgroundColor = '#ff4e50';
+    box2.style.backgroundColor = '#9C27B0';
+    box3.style.backgroundColor = '#49beb7';
+    box4.style.backgroundColor = '#f1c40f';
+});
+box2.addEventListener("click", function box2Text() {
+    let valBox = box2.textContent;
+    valBox++;
+    render("box2", valBox);
+});
+
+//Funciones para box 3
+box3.addEventListener("mouseover", function box3Color() {
+    box1.style.backgroundColor = '#ff4e50';
+    box2.style.backgroundColor = '#49beb7';
+    box3.style.backgroundColor = '#9C27B0';
+    box4.style.backgroundColor = '#f1c40f';
+});
+box3.addEventListener("click", function box3Text() {
+    let valBox = box3.textContent;
+    valBox++;
+    render("box3", valBox);
+});
+
+//Funciones para box 1
+box4.addEventListener("mouseover", function box4Color() {
+    box1.style.backgroundColor = '#ff4e50';
+    box2.style.backgroundColor = '#49beb7';
+    box3.style.backgroundColor = '#9C27B0';
+    box4.style.backgroundColor = '#f1c40f';
+});
+
+box4.addEventListener("click", function box4Text() {
+    let valBox = box1.textContent;
+    valBox++;
+    render("box4", valBox);
+});
+
+function render(box, value) { 
+    document.querySelector(`#${box}`).innerHTML = value;
+}
